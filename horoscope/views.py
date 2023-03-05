@@ -24,6 +24,6 @@ def get_info_about_zodiac(request,sign_zodiac:str):
     if sign_zodiac.lower() in signs:
         return HttpResponse(signs[sign_zodiac.lower()])
     else:
-        raise Http404()
+        raise Http404(f'Неизвестный знак зодиака {sign_zodiac}')
 
 
