@@ -6,8 +6,7 @@ from django.http import HttpResponse, Http404
 def all_horoscope(request):
     return HttpResponse('<h1>Страница со всеми знаками зодиака</h1>')
 
-def get_info_about_zodiac(request,sign_zodiac:str):
-    signs = {
+signs = {
         "aries": "Овен - первый знак зодиака, планета Марс (с 21 марта по 20 апреля).",
         "taurus": "Телец - второй знак зодиака, планета Венера (с 21 апреля по 21 мая).",
         "gemini": "Близнецы - третий знак зодиака, планета Меркурий (с 22 мая по 21 июня).",
@@ -21,9 +20,19 @@ def get_info_about_zodiac(request,sign_zodiac:str):
         "aquarius": "Водолей - одиннадцатый знак зодиака, планеты Уран и Сатурн (с 21 января по 19 февраля).",
         "pisces": "Рыбы - двенадцатый знак зодиака, планеты Юпитер (с 20 февраля по 20 марта)."
     }
+
+def get_info_about_zodiac(request,sign_zodiac:str):
+
     if sign_zodiac.lower() in signs:
         return HttpResponse(signs[sign_zodiac.lower()])
     else:
         raise Http404(f'Неизвестный знак зодиака {sign_zodiac}')
 
 
+def get_info_about_zodiac_by_num(request,sign_zodiac:int):
+    if not len(signs) >= int(sign_zodiac) >= 1:
+        raise Http404(f'Неизвестный знак зодиака {sign_zodiac}')
+    for n, sign in enumerate(signs, 1):
+        if n == int(sign_zodiac):
+            return HttpResponse(signs[sign])
+    # return HttpResponse(f'ddddd{sign_zodiac}')
