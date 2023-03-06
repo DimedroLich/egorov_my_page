@@ -3,6 +3,5 @@ import week_days.views as v
 
 urlpatterns = [
     path('',v.main),
-    path('monday/', v.mon),
-    path('tuesday/', v.tuesday),
+    path('<weekday>/', v.days),
 ]
