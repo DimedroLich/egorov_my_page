@@ -35,4 +35,3 @@ def get_info_about_zodiac_by_num(request,sign_zodiac:int):
     for n, sign in enumerate(signs, 1):
         if n == int(sign_zodiac):
             return HttpResponse(signs[sign])
-    # return HttpResponse(f'ddddd{sign_zodiac}')
