@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'geometry',
+    'horoscope',
+    'week_days',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
