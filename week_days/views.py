@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, Http404, HttpResponseRedirect
+from django.urls import reverse
 
 
 # Create your views here.
@@ -36,4 +37,5 @@ def days_by_n(request, weekday: int):
         raise Http404(f'Неверный номер дня - {weekday}')
     days_ = list(weekdays)
     current_day = days_[weekday-1]
-    return HttpResponseRedirect(f'/todo_week/{current_day}')
+    reversed_url = reverse("week_for_redirect", args=(current_day,))
+    return HttpResponseRedirect(reversed_url)
