@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404,HttpResponseRedirect
-
+from django.urls import reverse
 
 # Create your views here.
 def all_horoscope(request):
@@ -34,4 +34,5 @@ def get_info_about_zodiac_by_num(request,sign_zodiac:int):
         raise Http404(f'Неизвестный знак зодиака {sign_zodiac}')
     signs_ = list(signs)
     current_sign = signs_[sign_zodiac-1]
-    return HttpResponseRedirect(f'/horoscope/{current_sign}')
+    redirect_url = reverse("horoscop-name",args= (current_sign,))
+    return HttpResponseRedirect(redirect_url)
