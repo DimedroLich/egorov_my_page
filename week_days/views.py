@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, Http404
+from django.shortcuts import render, HttpResponse, Http404, HttpResponseRedirect
 
 
 # Create your views here.
@@ -32,7 +32,8 @@ def days(request, weekday):
 
 
 def days_by_n(request, weekday: int):
-    if 7 >= weekday >= 1:
-        return HttpResponse(f'Сегодня {weekday} день недели')
-    else:
+    if not 7 >= weekday >= 1:
         raise Http404(f'Неверный номер дня - {weekday}')
+    days_ = list(weekdays)
+    current_day = days_[weekday-1]
+    return HttpResponseRedirect(f'/todo_week/{current_day}')
