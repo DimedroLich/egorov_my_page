@@ -3,8 +3,6 @@ from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.urls import reverse
 
 # Create your views here.
-def all_horoscope(request):
-    return HttpResponse('<h1>Страница со всеми знаками зодиака</h1>')
 
 signs = {
         "aries": "Овен - первый знак зодиака, планета Марс (с 21 марта по 20 апреля).",
@@ -21,6 +19,19 @@ signs = {
         "pisces": "Рыбы - двенадцатый знак зодиака, планеты Юпитер (с 20 февраля по 20 марта)."
     }
 
+def index(request):
+    signs_ = list(signs)
+    signs_template = ""
+    for s in signs_:
+        url_path = reverse("horoscop-name", args=(s,))
+        signs_template+=f'<li><a href={url_path}>{s}</a></li>'
+    template = f"""
+                <h3>Знаки зодиака</h3>
+                <ul>
+                    {signs_template}
+                </ul>
+                """
+    return HttpResponse(template)
 def get_info_about_zodiac(request,sign_zodiac:str):
 
     if sign_zodiac.lower() in signs:
