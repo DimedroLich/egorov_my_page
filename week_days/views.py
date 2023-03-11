@@ -4,7 +4,7 @@ from django.urls import reverse
 
 # Create your views here.
 def main(request):
-    return HttpResponse('Задачи по дням недели')
+    return render(request,'week_days/greeting.html')
 
 
 weekdays = {

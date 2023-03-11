@@ -5,15 +5,14 @@ from math import pi
 
 # Create your views here.
 def rect(request, width, height):
-    return HttpResponse(f'Площадь прямоугольника размером {width}x{height} равна {width * height}')
-
+    return render(request,'geometry/rectangle.html')
 
 def square(request, width: int):
-    return HttpResponse(f'<h2>Площадь квадрата размером {width}x{width} равна {width ** 2}')
+    return render(request,'geometry/square.html')
 
 
 def circle(request, radius: int):
-    return HttpResponse(f'<h2>Площадь круга радиусом {radius} равна {round(pi * radius ** 2, 2)}')
+    return render(request,'geometry/circle.html')
 
 
 def get_rectangle_area(request, width, height):
