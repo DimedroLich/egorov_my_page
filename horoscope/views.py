@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 from datetime import date
 # Create your views here.
 
@@ -58,10 +59,7 @@ def index(request):
 
 
 def get_info_about_zodiac(request, sign_zodiac: str):
-    if sign_zodiac.lower() in signs:
-        return HttpResponse(signs[sign_zodiac.lower()])
-    else:
-        raise Http404(f'Неизвестный знак зодиака {sign_zodiac}')
+    return render(request, 'horoscope/info_zodiac.html')
 
 
 def get_info_about_zodiac_by_num(request, sign_zodiac: int):
