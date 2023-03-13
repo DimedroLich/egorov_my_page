@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'different_stuff',
     'geometry',
     'horoscope',
     'week_days',

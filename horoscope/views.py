@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.urls import reverse
 from django.template.loader import render_to_string
 from datetime import date
+from dataclasses import dataclass
 # Create your views here.
 
 signs = {
@@ -59,7 +60,11 @@ def index(request):
 
 
 def get_info_about_zodiac(request, sign_zodiac: str):
-    return render(request, 'horoscope/info_zodiac.html')
+    description = {
+        'zodiac_description' : signs[sign_zodiac],
+        'sign':sign_zodiac.title(),
+    }
+    return render(request, 'horoscope/info_zodiac.html',context=description)
 
 
 def get_info_about_zodiac_by_num(request, sign_zodiac: int):
@@ -111,3 +116,4 @@ def date_convert(request, month, day):
                 return HttpResponse(signs_by_dates[date_from_base].title())
     except ValueError:
         raise Http404()
+
