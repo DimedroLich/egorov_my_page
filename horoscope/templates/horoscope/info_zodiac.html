@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Гороскоп для {{sign}}</title>
+    <title>Гороскоп для {{sign|capfirst}}</title>
 </head>
 <body>
     <h1>Приложение гороскоп</h1>
-    <h2>{{ zodiac_description }}</h2>
+    <h2>{{ zodiac_description | title }}</h2>
+    <h4>Отображение числа с фильтром 'add': {{int_n|add:'5'}}</h4>
+    <h4>Отображение числа с фильтром 'cut': {{value|cut:" "}}</h4>
 </body>
 </html>

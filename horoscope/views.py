@@ -61,7 +61,9 @@ def index(request):
 def get_info_about_zodiac(request, sign_zodiac: str):
     description = {
         'zodiac_description' : signs[sign_zodiac],
-        'sign':sign_zodiac.title(),
+        'sign':sign_zodiac,
+        'int_n': 2,
+        'value': 'Django project ebobo',
     }
     return render(request, 'horoscope/info_zodiac.html',context=description)
 
