@@ -15,3 +15,12 @@ def kianu(request):
         'city_born':kianu.city_born,
     }
     return render(request,'different_stuff/kianu.html',context=data)
+
+
+def get_guinness_world_records(request):
+    context = {
+        'power_man': 'Narve Laeret',
+        'bar_name': 'Bob’s BBQ & Grill',
+        'count_needle': 1488,
+    }
+    return render(request, 'different_stuff/guinnessworldrecords.html', context=context)

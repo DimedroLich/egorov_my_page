@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.urls import reverse
-from django.template.loader import render_to_string
 from datetime import date
-from dataclasses import dataclass
+
 # Create your views here.
 
 signs = {
