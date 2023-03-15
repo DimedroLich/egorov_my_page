@@ -60,7 +60,7 @@ def index(request):
 
 def get_info_about_zodiac(request, sign_zodiac: str):
     description = {
-        'zodiac_description' : signs[sign_zodiac],
+        'zodiac_description' : signs.get(sign_zodiac),
         'sign':sign_zodiac,
         'int_n': 2,
         'value': 'Django project ebobo',
