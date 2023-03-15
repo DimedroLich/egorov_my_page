@@ -7,13 +7,7 @@
 <body>
     <ul>
         {% for sign in zodiacs %}
-            {% if forloop.first %}
-                <li> <b>{{forloop.counter}}: {{sign|capfirst}}</b> </li>
-            {% elif forloop.last %}
-                <li style="color:red"> <b>{{forloop.counter}}: {{sign|capfirst}}</b> </li>
-            {% else %}
-                <li>{{forloop.counter}}: {{sign|capfirst}}</li>
-            {% endif %}
+            <li>{{forloop.counter}}: <a href="{% url 'horoscop-name' sign %}">{{sign|capfirst}}</a></li>
         {% endfor %}
     </ul>
 
