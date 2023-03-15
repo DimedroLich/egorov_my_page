@@ -45,7 +45,6 @@ elements = {
 
 def index(request):
     signs_ = list(signs_dict)
-    # signs_template += f'<li><a href={url_path}>{s}</a></li>'
     context = {
         'zodiacs' : signs_,
         'signs' : signs_dict
