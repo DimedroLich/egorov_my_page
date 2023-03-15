@@ -5,7 +5,7 @@ from datetime import date
 
 # Create your views here.
 
-signs = {
+signs_dict = {
     "aries": "Овен - первый знак зодиака, планета Марс (с 21 марта по 20 апреля).",
     "taurus": "Телец - второй знак зодиака, планета Венера (с 21 апреля по 21 мая).",
     "gemini": "Близнецы - третий знак зодиака, планета Меркурий (с 22 мая по 21 июня).",
@@ -44,23 +44,19 @@ elements = {
 
 
 def index(request):
-    signs_ = list(signs)
-    signs_template = ""
-    for s in signs_:
-        url_path = reverse("horoscop-name", args=(s,))
-        signs_template += f'<li><a href={url_path}>{s}</a></li>'
-    template = f"""
-                <h3>Знаки зодиака</h3>
-                <ul>
-                    {signs_template}
-                </ul>
-                """
-    return HttpResponse(template)
+    signs_ = list(signs_dict)
+    # signs_template += f'<li><a href={url_path}>{s}</a></li>'
+    context = {
+        'zodiacs' : signs_,
+        'signs' : signs_dict
+    }
+
+    return render(request,'horoscope/index.html',context=context)
 
 
 def get_info_about_zodiac(request, sign_zodiac: str):
     description = {
-        'zodiac_description' : signs.get(sign_zodiac),
+        'zodiac_description' : signs_dict.get(sign_zodiac),
         'sign':sign_zodiac,
         'int_n': 2,
         'value': 'Django project ebobo',
@@ -69,9 +65,9 @@ def get_info_about_zodiac(request, sign_zodiac: str):
 
 
 def get_info_about_zodiac_by_num(request, sign_zodiac: int):
-    if not len(signs) >= int(sign_zodiac) >= 1:
+    if not len(signs_dict) >= int(sign_zodiac) >= 1:
         raise Http404(f'Неизвестный знак зодиака {sign_zodiac}')
-    signs_ = list(signs)
+    signs_ = list(signs_dict)
     current_sign = signs_[sign_zodiac - 1]
     redirect_url = reverse("horoscop-name", args=(current_sign,))
     return HttpResponseRedirect(redirect_url)

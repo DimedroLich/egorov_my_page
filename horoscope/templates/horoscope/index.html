@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Меню</title>
+</head>
+<body>
+    <ul>
+        {% for sign in zodiacs %}
+            {% if forloop.first %}
+                <li> <b>{{forloop.counter}}: {{sign|capfirst}}</b> </li>
+            {% elif forloop.last %}
+                <li style="color:red"> <b>{{forloop.counter}}: {{sign|capfirst}}</b> </li>
+            {% else %}
+                <li>{{forloop.counter}}: {{sign|capfirst}}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    {% for k,v in signs.items %}
+        <p><b><i>{{k}} : {{v}}</i></b></p>
+    {% endfor %}
+
+</body>
+</html>
