@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Меню</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+Меню
+{% endblock %}
+    {% block content %}
+
     <ul>
         {% for sign in zodiacs %}
             <li>{{forloop.counter}}: <a href="{% url 'horoscop-name' sign %}">{{sign|capfirst}}</a></li>
@@ -15,5 +15,4 @@
         <p><b><i>{{k}} : {{v}}</i></b></p>
     {% endfor %}
 
-</body>
-</html>
+    {% endblock %}
