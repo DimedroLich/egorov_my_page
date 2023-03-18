@@ -3,8 +3,9 @@
 {% block title %}
 Меню
 {% endblock %}
-    {% block content %}
 
+    {% block content %}
+    {% include 'includes/navbar.html' %}
     <ul>
         {% for sign in zodiacs %}
             <li>{{forloop.counter}}: <a href="{% url 'horoscop-name' sign %}">{{sign|capfirst}}</a></li>
@@ -14,5 +15,5 @@
     {% for k,v in signs.items %}
         <p><b><i>{{k}} : {{v}}</i></b></p>
     {% endfor %}
-
+    {% include 'includes/navbar.html' %}
     {% endblock %}
