@@ -61,3 +61,6 @@ def people_detail(request):
         'people' : people
     }
     return render(request,'different_stuff/people_detail.html',context=context)
+
+def bt_table(request):
+    return render(request,'different_stuff/beautiful_table.html')
