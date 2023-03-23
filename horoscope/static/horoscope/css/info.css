@@ -14,6 +14,6 @@ h1 {
     margin-left: 5em;
 }
 
-ul a:hover, ul a:active {
-    color: #00c5c8;
+.page-content {
+    margin-top: 10%;
 }
