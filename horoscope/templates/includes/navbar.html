@@ -2,7 +2,7 @@
 <nav>
   <a href="{% url 'horoscope_main' %}">Главная</a>
   <a href="https://horo.mail.ru/" target="_blank">Источник</a>
-  {% for sign in signs_ %}
-    <a href="{% url 'horoscop-name' sign%}">{{sign | title}}</a>
+  {% for sign, descr in signs.items %}
+    <a href="{% url 'horoscop-name' sign %}">{{ descr|split }}</a>
   {% endfor %}
 </nav>

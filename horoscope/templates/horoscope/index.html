@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load my_filters %}
 
 {% block css_additional %}
     <link rel="stylesheet" href="{% static '/horoscope/css/index.css' %}">
@@ -15,8 +16,8 @@
     <div class="horoscope">
         <h1>Приложение гороскоп</h1>
         <ul>
-        {% for sign in zodiacs %}
-            <li><a href="{% url 'horoscop-name' sign %}">{{sign|capfirst}}</a></li>
+        {% for sign,descr in signs.items %}
+            <li><a href="{% url 'horoscop-name' sign %}">{{descr|split}}</a></li>
         {% endfor %}
         </ul>
     </div>
